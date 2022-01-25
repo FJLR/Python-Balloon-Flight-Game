@@ -34,17 +34,20 @@ def update_high_scores():
         high_scores = line.split()
         for high_score in high_scores:
             if(score > int(high_score)):
-                score.append(str(score) + " ")
+                scores.append(str(score) + " ")
                 score = int(high_score)
             else:
                 scores.append(str(high_score) + " ")
-        with open(filename, "w") as file:
-            for high_score in scores:
-                file.write(high_score)
-                file.close()
+    with open(filename, "w") as file:
+        for high_score in scores:
+            file.write(high_score)
+            
+                
+       
+                
 
 def display_high_scores():
-    screen.draw.text("HIGH SCORES", (350, 150), color="black")
+    screen.draw.text("High Scores", (350, 150), color="black")
     y = 175
     position = 1
     for high_score in scores:
@@ -111,7 +114,7 @@ def update():
     if house.right > 0:
             house.x -= 2
     else:
-        house.x = randint(400, 800)
+        house.x = randint(800, 1000)
         score += 1
 
             
@@ -122,7 +125,7 @@ def update():
         tree.x = randint(800, 1600)
         score +=1
 
-    if balloon.top <0 or balloon.bottom > 560:
+    if balloon.top < 0 or balloon.bottom > 560:
             game_over = True
             update_high_scores()
 
@@ -132,8 +135,6 @@ def update():
            game_over = True
            update_high_scores()
 
-      
+     
 pgzrun.go()
-
-#my 3rd Python game - successfully - Nov. 5, 2021 - Tutor: Matt Szal
-#some bugs needs to be fixed - like the score list :)
+file.close()
